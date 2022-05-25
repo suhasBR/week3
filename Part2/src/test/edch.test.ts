@@ -8,6 +8,7 @@ import {
 } from '../index';
 
 describe('ECDH test', () => {
+  jest.setTimeout(30000);
   let eddsa: EdDSA;
   beforeAll(async () => {
     eddsa = await buildEddsaModule();
@@ -26,7 +27,7 @@ describe('ECDH test', () => {
     for (let i = 0; i < 5; i++) {
       aliceMessage.push(BigInt(Math.floor(Math.random() * 50)));
     }
-    //console.log('plaintext:', aliceMessage);
+    // console.log('plaintext:', aliceMessage);
     // Alice encrypt with her private key and bob pubkey
     const ciphertext = await encrypt(aliceMessage, ecdhSharedKey);
 
